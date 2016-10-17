@@ -91,7 +91,7 @@ class PasswordVault(models.Model):
         if not self.pk:
             self.password = functions.pVault_encode_AES(config.secret, self.password, config.iv)
             # put it in history changelog            
-            h = PasswordVaultHistory.create(password_vault=self, value=self.password)
+            h = PasswordVaultHistory.objects.create(password_vault=self, value=self.password)
             self.passwordvaulthistory_set.add( h )
             
         else:
