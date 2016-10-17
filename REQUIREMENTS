@@ -1,0 +1,7 @@
+pycrypto
+passlib
+hashlib
+python-jose
+redis
+django-celery
+flower
