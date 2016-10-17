@@ -10,10 +10,10 @@ TODO:
 - Json Web Tokens (python-jose's JWT) from production nodes brings passwords updates and brand new credentials on pVault
 
 REQUIREMENTS
-  pycrypto
-  passlib
-  hashlib
-  python-jose
-  redis  # change it to your preferred message broker
-  django-celery
-  flower # optional
+- pycrypto
+- passlib
+- hashlib
+- python-jose
+- redis  # change it to your preferred message broker
+- django-celery
+- flower # optional
