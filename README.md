@@ -17,3 +17,4 @@ REQUIREMENTS:
 - redis  # change it to your preferred message broker
 - django-celery
 - flower # optional
+- MySQL-python
