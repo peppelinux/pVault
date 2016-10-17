@@ -88,6 +88,8 @@ class PasswordVault(models.Model):
     servers.admin_order_field = 'on_servers' # a DB field to order in relation to
 
     def save(self, *args, **kwargs):
+        super(PasswordVault, self).save(*args, **kwargs)
+
         if not self.pk:
             self.password = functions.pVault_encode_AES(config.secret, self.password, config.iv)
             # put it in history changelog            
@@ -110,7 +112,7 @@ class PasswordVault(models.Model):
         # risalvo tutti gli exports
         for i in self.passwordvaultexports_set.filter(is_active=True):
             i.save()
-        
+
     def __unicode__(self):
         return '%s' % (self.username)      
         #return '%s on %s' % (self.username, ','.join(self.on_servers) )
@@ -145,3 +147,4 @@ class PasswordVaultExports(models.Model):
     
     def __unicode__(self):
         return '%s %s' % (self.password_encoding.encoding, self.password_vault)
+
