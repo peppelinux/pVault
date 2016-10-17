@@ -7,7 +7,7 @@ It could be also used together with celery to propagate exported user credential
 TODO:
 - Celery tasks for different kind of password propagations (joomla, wordpress, freeradius...);
 - some Celery worker examples for production nodes;
-- Json Web Tokens (python-jose's JWT) in views.py. This feature lets the production nodes to push password updates and new credentials  in pVault as well;
+- Json Web Tokens (python-jose's JWT) in views.py. This feature lets the production nodes to push in pVault password updates and new credentials as well;
 
 REQUIREMENTS:
 - pycrypto
