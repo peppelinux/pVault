@@ -92,7 +92,7 @@ class PasswordVault(models.Model):
         s = '<ul>'
         for i in h:
             s += '''<li>
-                    <p>%s</p>
+                    <p style="margin-bottom:1px;">%s</p>
                     <p>%s</p>
                 </li>''' % (i.password_encoding, i.value)
             s += '</ul>'
