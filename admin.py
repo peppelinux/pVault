@@ -31,7 +31,7 @@ class ServerAdmin(admin.ModelAdmin):
 admin.site.register(Server, ServerAdmin)
 
 class PasswordVaultAdmin(admin.ModelAdmin):
-    list_display  = [ 'username', 'password', 'servers', 'is_active'  ]
+    list_display  = [ 'username', 'password', 'servers', 'hashes', 'is_active'  ]
     inlines       = [ PasswordVaultExportsInLine, PasswordVaultHistoryInLine ]
 
 admin.site.register(PasswordVault, PasswordVaultAdmin)

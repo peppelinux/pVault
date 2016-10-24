@@ -13,7 +13,7 @@ class EncodingFormat(models.Model):
     FUNCTIONS = (
                     ('md5','pVault_MD5'),
                     ('salted_md5','pVault_Salted_MD5'),                    
-                    ('ntlm','pVault_NTLM'),
+                    ('nt','pVault_NT'),
                 )
     
     id_tab   = models.AutoField(primary_key=True)
@@ -86,6 +86,22 @@ class PasswordVault(models.Model):
     servers.allow_tags = True # allows HTML and/or entities (e.g., &nbsp;)
     servers.short_description = 'on servers' # customize heading title in changelist
     servers.admin_order_field = 'on_servers' # a DB field to order in relation to
+
+    def hashes(self):
+        h = self.passwordvaultexports_set.filter(is_active=True)
+        s = '<ul>'
+        for i in h:
+            s += '''<li>
+                    <p>%s</p>
+                    <p>%s</p>
+                </li>''' % (i.password_encoding, i.value)
+            s += '</ul>'
+        return s
+    
+    hashes.allow_tags = True # allows HTML and/or entities (e.g., &nbsp;)
+    hashes.short_description = 'hashes' # customize heading title in changelist
+    hashes.admin_order_field = 'hashes' # a DB field to order in relation to
+    
 
     def save(self, *args, **kwargs):
         super(PasswordVault, self).save(*args, **kwargs)

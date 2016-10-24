@@ -30,7 +30,7 @@ def pVault_MD5(text):
     m.update(text)
     return binascii.hexlify(m.digest())
 
-def pVault_NTLM(text):
+def pVault_NT(text):
     m = passlib.hash.nthash.encrypt(text)
     return m
 
