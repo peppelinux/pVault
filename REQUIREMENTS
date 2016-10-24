@@ -3,7 +3,6 @@ passlib
 hashlib
 python-jose
 redis
-django-celery
-flower
 MySQL-python
 django
+django-rq
