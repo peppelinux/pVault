@@ -20,6 +20,6 @@ RQ_QUEUES = {
 }
 
 # remember to put this in urls.py
-#urlpatterns += patterns('',
-#    url(r'^django-rq/', include('django_rq.urls')),
-#)
+#from django.conf.urls import include     
+#urlpatterns.append( url(r'^django-rq/', include('django_rq.urls') ))
+
