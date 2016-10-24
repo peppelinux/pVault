@@ -4,16 +4,6 @@ from .models import *
 from admin_inline_fk import *
 
 from django.contrib import admin
-from djcelery.models import (TaskState, WorkerState,
-                 PeriodicTask, IntervalSchedule, CrontabSchedule)
-
-# disable djcelery modeladmin
-admin.site.unregister(TaskState)
-admin.site.unregister(WorkerState)
-admin.site.unregister(IntervalSchedule)
-admin.site.unregister(CrontabSchedule)
-admin.site.unregister(PeriodicTask)
-
 
 class EncodingFormatAdmin(admin.ModelAdmin):
     #search_fields = ['codice_stazione_regione']
