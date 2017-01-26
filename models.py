@@ -102,6 +102,8 @@ class PasswordVault(models.Model):
     hashes.short_description = 'hashes' # customize heading title in changelist
     hashes.admin_order_field = 'hashes' # a DB field to order in relation to
     
+    def view(self):
+        return functions.pVault_decode_AES(config.secret, self.password, config.iv)    
 
     def save(self, *args, **kwargs):
         super(PasswordVault, self).save(*args, **kwargs)
