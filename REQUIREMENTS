@@ -6,3 +6,4 @@ redis
 MySQL-python
 django
 django-rq
+uwsgi
