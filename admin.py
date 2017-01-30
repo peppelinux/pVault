@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from .forms import *
 
 from admin_inline_fk import *
 
@@ -22,6 +23,11 @@ class ServerAdmin(admin.ModelAdmin):
 admin.site.register(Server, ServerAdmin)
 
 class PasswordVaultAdmin(admin.ModelAdmin):
+    list_display = ('username', 'is_active',)
+    list_filter = ('is_active', 'date_creation', )
+    search_fields = ('username', )    
+    form = PasswordVaultForm
+    
     def view_password(modeladmin, request, queryset):      
         from pVault.models import PasswordVault
         for i in queryset:

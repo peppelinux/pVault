@@ -68,7 +68,7 @@ class PasswordVault(models.Model):
     id_tab           = models.AutoField(primary_key=True)
     date_creation    = models.DateTimeField(auto_now=True)
     username         = models.CharField(max_length=135, blank=False, null=False)        
-    password         = models.CharField(max_length=1024, null=False,blank=False, help_text="this will be filled with encrypted password encoded as hexlified string")
+    password         = models.CharField(max_length=33, null=False,blank=False, help_text="this will be filled with encrypted password encoded as hexlified string")
     description      = models.CharField(max_length=135, null=True,blank=True)    
     export_to_servers   = models.ManyToManyField(Server, null=True,blank=True)
     is_active           = models.BooleanField()    
