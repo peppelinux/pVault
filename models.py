@@ -70,9 +70,10 @@ class PasswordVault(models.Model):
     username         = models.CharField(max_length=135, blank=False, null=False)        
     password         = models.CharField(max_length=33, null=False,blank=False, help_text="this will be filled with encrypted password encoded as hexlified string")
     description      = models.CharField(max_length=135, null=True,blank=True)    
-    export_to_servers   = models.ManyToManyField(Server, null=True,blank=True)
+    export_to_servers   = models.ManyToManyField(Server)
     is_active           = models.BooleanField()    
-    exported_to_servers = models.BooleanField()    
+    exported            = models.BooleanField()   
+    exported_date    = models.DateTimeField(null=True,blank=True)
     class Meta:
         ordering = ['username']
         verbose_name_plural = "Password Vault (users credentials)"      
@@ -134,6 +135,18 @@ class PasswordVault(models.Model):
     def __unicode__(self):
         return '%s' % (self.username)      
         #return '%s on %s' % (self.username, ','.join(self.on_servers) )
+
+class Person(models.Model):
+    id_tab           = models.AutoField(primary_key=True)
+    first_name         = models.CharField(max_length=135, blank=False, null=False)        
+    last_name         = models.CharField(max_length=135, blank=False, null=False)        
+    email             = models.EmailField(max_length=135, blank=False, null=False)        
+    pvault_accounts   = models.ManyToManyField(PasswordVault)
+    class Meta:
+        ordering = ['first_name']
+        verbose_name_plural = "Persons"        
+    def __unicode__(self):
+        return '%s' % self.first_name
 
 class PasswordVaultHistory(models.Model):
     id_tab           = models.AutoField(primary_key=True)

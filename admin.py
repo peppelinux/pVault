@@ -22,11 +22,16 @@ class ServerAdmin(admin.ModelAdmin):
     pass
 admin.site.register(Server, ServerAdmin)
 
+class PersonAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Person, ServerAdmin)
+
 class PasswordVaultAdmin(admin.ModelAdmin):
     list_display = ('username', 'is_active',)
     list_filter = ('is_active', 'date_creation', )
     search_fields = ('username', )    
     form = PasswordVaultForm
+    readonly_fields = ('password',)
     
     def view_password(modeladmin, request, queryset):      
         from pVault.models import PasswordVault

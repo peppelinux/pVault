@@ -1,6 +1,10 @@
 pycrypto
 passlib
+
+# se errore "TypeError: 'frozenset' object is not callable
+# installa hashlib con easy_install e risolvi"
 hashlib
+
 python-jose
 redis
 MySQL-python
